@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/realjustice/ren_forbid"
+	"github.com/realjustice/renju_forbid"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/realjustice/ren_forbid
+module github.com/realjustice/renju_forbid
 
 go 1.15
 
