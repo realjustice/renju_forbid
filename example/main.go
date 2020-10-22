@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"rejun_robid"
+	"github.com/realjustice/ren_forbid"
 )
 
 func main() {
@@ -19,10 +19,10 @@ func main() {
 	// demo 10 (;GM[1]FF[4]CA[UTF-8]SZ[15]AP[弈客围棋];B[fe];W[ed];B[ff];W[an];B[fh];W[en];B[fi];W[nb];B[fj];W[ej];B[mn];W[ia];B[gg];W[nd];B[hg];W[ah];B[if];W[ho];B[ih];W[je];B[lg];W[ji];B[ig]) 否
 
 	// 0： 无禁手 1：三三禁手，2：四四禁手，3：长连
-	forbidResult := ren_forbid.CheckForbid("(;SZ[15]AP[WGo.js:2]FF[4]GM[1]CA[UTF-8];B[dd];W[hd];B[de];W[ke];B[ci];W[li];B[df];W[lf];B[dg];W[mb];B[dh])")
+	forbidResult := ren.CheckForbid("(;SZ[15]AP[WGo.js:2]FF[4]GM[1]CA[UTF-8];B[dd];W[hd];B[de];W[ke];B[ci];W[li];B[df];W[lf];B[dg];W[mb];B[dh])")
 
-	// 0：无结果，1：黑胜，2：白胜
-	OverResult := ren_forbid.CheckOver("(;SZ[15]AP[WGo.js:2]FF[4]GM[1]CA[UTF-8];B[dd];W[hd];B[de];W[ke];B[ci];W[li];B[df];W[lf];B[dg];W[mb];B[dh])")
+	// 0：无结果，1：黑胜，-1：白胜
+	OverResult := ren.CheckWin("(;SZ[15]AP[WGo.js:2]FF[4]GM[1]CA[UTF-8];B[dd];W[hd];B[de];W[ke];B[ci];W[li];B[df];W[lf];B[dg];W[mb];B[dh])")
 
 	fmt.Printf("禁手结果：%d\n", forbidResult)
 	fmt.Printf("对局结果：%d\n", OverResult)

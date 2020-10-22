@@ -1,4 +1,4 @@
-package ren_forbid
+package ren
 
 type line4V struct {
 	x1 [][S]int
@@ -15,7 +15,6 @@ const NO_BANNER_HANDS = 0
 const DOUBLE3 = 1
 const DOUBLE4 = 2
 const OVERLINE = 3
-
 
 func GA(x int) int {
 	return x & 0xff
@@ -208,8 +207,7 @@ func (line4 *line4V) A3r(x, y int) int {
 				count--
 			}
 			count++
-		} else
-		{
+		} else {
 
 			r1 := GA(ll1)
 			r2 := GB(ll1)
@@ -228,8 +226,7 @@ func (line4 *line4V) A3r(x, y int) int {
 				count--
 			}
 			count++
-		} else
-		{
+		} else {
 			r1 := GA(ll2)
 			r2 := GB(ll2)
 			if line4.x1[x][y] == 1 && (line4.foulr(r1, y) != 0 || line4.A5test(r1, y) != 0) && (line4.foulr(r2, y) != 0 || line4.A5test(r2, y) != 0) {
@@ -246,8 +243,7 @@ func (line4 *line4V) A3r(x, y int) int {
 				count--
 			}
 			count++
-		} else
-		{
+		} else {
 			r1 := GA(ll3)
 			r2 := GB(ll3)
 			if line4.x1[x][y] == 1 && (line4.foulr(x+y-r1, r1) != 0 || line4.A5test(x+y-r1, r1) != 0) && (line4.foulr(x+y-r2, r2) != 0 || line4.A5test(x+y-r2, r2) != 0) {
@@ -263,8 +259,7 @@ func (line4 *line4V) A3r(x, y int) int {
 				count--
 			}
 			count++
-		} else
-		{
+		} else {
 			r1 := GA(ll4)
 			r2 := GB(ll4)
 			if line4.x1[x][y] == 1 && (line4.foulr(S-1+x-y-r1, S-1-r1) != 0 || line4.A5test(S-1+x-y-r1, S-1-r1) != 0) && (line4.foulr(S-1+x-y-r2, S-1-r2) != 0 || line4.A5test(S-1+x-y-r2, S-1-r2) != 0) {

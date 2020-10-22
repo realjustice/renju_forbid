@@ -1,4 +1,4 @@
-package ren_forbid
+package ren
 
 import (
 	"fmt"
@@ -18,8 +18,8 @@ const BLACK_COLOR = 1
 const WhITE_COLOR = -1
 
 // 是否结束
-func CheckOver(sgf string) int {
-	return checkOver(initBoard(sgf))
+func CheckWin(sgf string) int {
+	return checkWin(initBoard(sgf))
 }
 
 // 校验是否含有禁手
@@ -69,10 +69,9 @@ func checkForbid(board [S][S]int, x, y int) int {
 	}
 }
 
-
 // 白胜的逻辑（五子连珠）
 // 黑胜的逻辑（五子连珠且不包含禁手）
-func checkOver(board [S][S]int, x, y int) int {
+func checkWin(board [S][S]int, x, y int) int {
 	copyBoard := board[:]
 	line4V := newLine4V(copyBoard)
 

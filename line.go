@@ -1,4 +1,4 @@
-package ren_forbid
+package ren
 
 type line struct {
 	x []int
