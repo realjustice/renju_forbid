@@ -3,7 +3,6 @@ package ren
 import (
 	"fmt"
 	"gitee.com/larry_dev/goban"
-	"log"
 	"regexp"
 	"strconv"
 	"strings"
@@ -30,7 +29,7 @@ func CheckForbid(sgf string) int {
 // 坐标转为棋盘中的坐标字符串
 func coordinateToRenjuPos(x, y, size int) string {
 	if x == -1 && y == -1 {
-		return "pass"
+		return "a0"
 	}
 	return strings.ToUpper(fmt.Sprintf("%s%d", string(x+'a'), size-y))
 }
@@ -40,19 +39,21 @@ func initBoard(sgf string) ([S][S]int, int, int) {
 	pos := convertSgfToPos(sgf)
 	fmt.Println(pos)
 	compile := regexp.MustCompile(`[a-o][0-9]+`)
+	board := [S][S]int{}
 	if compile == nil {
-		log.Fatal(compile)
+		return board, 0, 0
 	}
 	subMatch := compile.FindAllStringSubmatch(pos, -1)
 	x, y := -1, -1
-	board := [S][S]int{}
 	curColor := BLACK_COLOR
 	for _, v := range subMatch {
 		curPos := v[0]
 		x = int(curPos[0]) - 'a'
 		pos, _ := strconv.Atoi(curPos[1:])
-		y = pos - 1
-		board[x][y] = curColor
+		if pos != 0 {
+			y = pos - 1
+			board[x][y] = curColor
+		}
 		curColor = -curColor
 	}
 	return board, x, y
@@ -102,4 +103,21 @@ func convertSgfToPos(sgf string) string {
 	})
 
 	return strings.ToLower(pos)
+}
+
+func PrintBoard(board [S][S]int) {
+	for _, v1 := range board {
+		for k2, v2 := range v1 {
+			if v2 == BLACK_COLOR {
+				fmt.Print("X ")
+			} else if v2 == WHITE_WIN {
+				fmt.Print("O ")
+			} else {
+				fmt.Print(". ")
+			}
+			if k2 == S-1 {
+				fmt.Println()
+			}
+		}
+	}
 }

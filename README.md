@@ -22,7 +22,7 @@
 
 ## 安装
 
-本项目使用 [go1,15](https://gomirrors.org/)。请确保你本地安装了它们。
+本项目使用 [go1.15](https://gomirrors.org/)。请确保你本地安装了它们。
 
 ```sh
 $ go get -u github.com/realjustice/renju_forbid
