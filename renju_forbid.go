@@ -21,6 +21,11 @@ func CheckWin(sgf string) int {
 	return checkWin(initBoard(sgf))
 }
 
+// 是否结束
+func IsRenju(sgf string) int {
+	return isRenju(initBoard(sgf))
+}
+
 // 校验是否含有禁手
 func CheckForbid(sgf string) int {
 	return checkForbid(initBoard(sgf))
@@ -81,6 +86,19 @@ func checkWin(board [S][S]int, x, y int) int {
 		return WHITE_WIN
 	}
 
+	if copyBoard[x][y] == 1 && line4V.hasWon(x, y) {
+		return BLACK_WIN
+	} else if copyBoard[x][y] == -1 && line4V.hasWon(x, y) {
+		return WHITE_WIN
+	}
+
+	return NO_RESULT
+}
+
+// 是否五子连珠（不包含禁手判断）
+func isRenju(board [S][S]int, x, y int) int {
+	copyBoard := board[:]
+	line4V := newLine4V(copyBoard)
 	if copyBoard[x][y] == 1 && line4V.hasWon(x, y) {
 		return BLACK_WIN
 	} else if copyBoard[x][y] == -1 && line4V.hasWon(x, y) {
