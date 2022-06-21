@@ -22,8 +22,12 @@ func main() {
 	forbidResult := ren.CheckForbid("(;AP[WGo.js:2]FF[4]GM[1]CA[UTF-8]SZ[15];B[dd];W[];B[fd];W[];B[ec];W[];B[ee];W[];B[ed])")
 
 	// 0：无结果，1：黑胜，-1：白胜
-	OverResult := ren.CheckWin("(;SZ[15]AP[WGo.js:2]FF[4]GM[1]CA[UTF-8];B[dd];B[ed];B[fd];B[ec];B[ee])")
+	OverResult := ren.CheckWin("(;SZ[15]AP[WGo.js:2]FF[4]GM[1]CA[UTF-8];B[dd];B[ed];B[fd];B[ec];W[];B[ee])")
+
+	// 0: 无结果，1：黑五子连珠，-1：白：五子连珠
+	renjuResult := ren.IsRenju("(;AP[WGo.js:2]FF[4]GM[1]CA[UTF-8]SZ[15];B[dd];W[];B[fd];W[];B[ec];W[];B[ee];W[];B[ed];W[];B[ef];W[];B[eg])")
 
 	fmt.Printf("禁手结果：%d\n", forbidResult)
 	fmt.Printf("对局结果：%d\n", OverResult)
+	fmt.Printf("五子连珠结果：%d\n", renjuResult)
 }
