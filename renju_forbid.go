@@ -42,7 +42,7 @@ func coordinateToRenjuPos(x, y, size int) string {
 // 初始化棋盘
 func initBoard(sgf string) ([S][S]int, int, int) {
 	pos := convertSgfToPos(sgf)
-	fmt.Println(pos)
+	//fmt.Println(pos)
 	compile := regexp.MustCompile(`[a-o][0-9]+`)
 	board := [S][S]int{}
 	if compile == nil {
