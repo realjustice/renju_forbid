@@ -18,7 +18,7 @@ func main() {
 	// demo 10 (;GM[1]FF[4]CA[UTF-8]SZ[15]AP[弈客围棋];B[fe];W[ed];B[ff];W[an];B[fh];W[en];B[fi];W[nb];B[fj];W[ej];B[mn];W[ia];B[gg];W[nd];B[hg];W[ah];B[if];W[ho];B[ih];W[je];B[lg];W[ji];B[ig]) 否
 
 	// 0： 无禁手 1：三三禁手，2：四四禁手，3：长连
-	forbidResult := ren.CheckForbid("(;SZ[15]KM[7.5]HA[0]AW[if][ig][jg][ji][fh][hk][hi][ge][gf][ff]AB[fe][je][jf][hj][ih][gi][gh][hh][hg][hf];B[gj];W[gk];B[fj];W[ij];B[kh];W[jh];B[ek];W[dl];B[ej];W[dj];B[fi];W[dk];B[di];W[dn];B[dm];W[ei];B[ck];W[hd];B[eg];W[he];B[kf];W[jj];B[jk];W[hc];B[lg];W[hb];B[ha];W[ic];B[jb];W[gl];B[fm];W[id];B[fg];W[ie])")
+	forbidResult := ren.CheckForbid("(;SZ[15]KM[7.5]HA[0]AW[fj][gi][gh][gf][hg][ig][jh][lg][le]AB[lh][ij][hk][gj][hh][gg][hf][if][ki][kh];W[ji];B[kj];W[kg];B[jg];W[he];B[hj];W[jj])")
 
 	// 0：无结果，1：黑胜，-1：白胜
 	OverResult := ren.CheckWin("(;SZ[15]AP[WGo.js:2]FF[4]GM[1]CA[UTF-8];B[dd];B[ed];B[fd];B[ec];W[];B[ee])")

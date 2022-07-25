@@ -45,38 +45,39 @@ func initABAW(sgf string) [S][S]int {
 	board := [S][S]int{}
 	for _, v := range kifu.Root.Steup {
 		curPos := strings.ToLower(coordinateToRenjuPos(v.X, v.Y, S))
-		x := int(curPos[0]) - 'a'
-		pos, _ := strconv.Atoi(curPos[1:])
-		if pos != 0 {
-			y := pos - 1
-			board[x][y] = v.C
-		}
+		setBoardMove(&board, curPos, v.C)
 	}
 
 	return board
 }
 
+func setBoardMove(board *[S][S]int, curPos string, c int) (x, y int) {
+	x = int(curPos[0]) - 'a'
+	pos, _ := strconv.Atoi(curPos[1:])
+	if pos != 0 {
+		y := pos - 1
+		board[x][y] = c
+	}
+	return x, y
+}
+
 // 初始化棋盘
 func initBoard(sgf string) ([S][S]int, int, int) {
 	board := initABAW(sgf)
+	//PrintBoard(board)
 	pos := convertSgfToPos(sgf)
 	compile := regexp.MustCompile(`[a-o][0-9]+`)
 	if compile == nil {
 		return board, 0, 0
 	}
 	subMatch := compile.FindAllStringSubmatch(pos, -1)
-	x, y := -1, -1
 	curColor := BLACK_COLOR
+	x, y := -1, -1
 	for _, v := range subMatch {
-		curPos := v[0]
-		x = int(curPos[0]) - 'a'
-		pos, _ := strconv.Atoi(curPos[1:])
-		if pos != 0 {
-			y = pos - 1
-			board[x][y] = curColor
-		}
+		x, y = setBoardMove(&board, v[0], curColor)
 		curColor = -curColor
 	}
+	PrintBoard(board)
 	return board, x, y
 }
 
