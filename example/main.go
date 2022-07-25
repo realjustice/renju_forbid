@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-
 	// demo 1 (;GM[1]FF[4]CA[UTF-8]SZ[15]AP[弈客围棋];B[dh];W[ch];B[eh];W[an];B[fh];W[dn];B[hg];W[go];B[hi];W[ln];B[ih];W[nn];B[kh];W[la];B[hh]) 否
 	// demo 2 (;GM[1]FF[4]CA[UTF-8]SZ[15]AP[弈客围棋];B[hg];W[nn];B[hi];W[cn];B[gh];W[jn];B[ih];W[ho];B[lh];W[en];B[dh];W[hn];B[hh]) 否
 	// demo 3 (;GM[1]FF[4]CA[UTF-8]SZ[15]AP[弈客围棋];B[eh];W[eo];B[fh];W[lo];B[hg];W[hn];B[hi];W[nn];B[ih];W[no];B[jh];W[kc];B[hh]) 否
@@ -19,7 +18,7 @@ func main() {
 	// demo 10 (;GM[1]FF[4]CA[UTF-8]SZ[15]AP[弈客围棋];B[fe];W[ed];B[ff];W[an];B[fh];W[en];B[fi];W[nb];B[fj];W[ej];B[mn];W[ia];B[gg];W[nd];B[hg];W[ah];B[if];W[ho];B[ih];W[je];B[lg];W[ji];B[ig]) 否
 
 	// 0： 无禁手 1：三三禁手，2：四四禁手，3：长连
-	forbidResult := ren.CheckForbid("(;SZ[15]KM[7.5]HA[0]AW[jd][he][jf][kg][jg][ig][hg][fh][li][mf][ii][hi]AB[hh][kd][ke][je][ie][if][hf][gg][fi][lg][kh][ji];B[lc];W[mb];B[ib];W[id];B[kc];W[kf];B[le];W[me];B[jc])")
+	forbidResult := ren.CheckForbid("(;SZ[15]KM[7.5]HA[0]AW[if][ig][jg][ji][fh][hk][hi][ge][gf][ff]AB[fe][je][jf][hj][ih][gi][gh][hh][hg][hf];B[gj];W[gk];B[fj];W[ij];B[kh];W[jh];B[ek];W[dl];B[ej];W[dj];B[fi];W[dk];B[di];W[dn];B[dm];W[ei];B[ck];W[hd];B[eg];W[he];B[kf];W[jj];B[jk];W[hc];B[lg];W[hb];B[ha];W[ic];B[jb];W[gl];B[fm];W[id];B[fg];W[ie])")
 
 	// 0：无结果，1：黑胜，-1：白胜
 	OverResult := ren.CheckWin("(;SZ[15]AP[WGo.js:2]FF[4]GM[1]CA[UTF-8];B[dd];B[ed];B[fd];B[ec];W[];B[ee])")

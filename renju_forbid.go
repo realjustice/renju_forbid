@@ -39,12 +39,28 @@ func coordinateToRenjuPos(x, y, size int) string {
 	return strings.ToUpper(fmt.Sprintf("%s%d", string(x+'a'), size-y))
 }
 
+// 初始化预设盘面
+func initABAW(sgf string) [S][S]int {
+	kifu := goban.ParseSgf(sgf)
+	board := [S][S]int{}
+	for _, v := range kifu.Root.Steup {
+		curPos := strings.ToLower(coordinateToRenjuPos(v.X, v.Y, S))
+		x := int(curPos[0]) - 'a'
+		pos, _ := strconv.Atoi(curPos[1:])
+		if pos != 0 {
+			y := pos - 1
+			board[x][y] = v.C
+		}
+	}
+
+	return board
+}
+
 // 初始化棋盘
 func initBoard(sgf string) ([S][S]int, int, int) {
+	board := initABAW(sgf)
 	pos := convertSgfToPos(sgf)
-	//fmt.Println(pos)
 	compile := regexp.MustCompile(`[a-o][0-9]+`)
-	board := [S][S]int{}
 	if compile == nil {
 		return board, 0, 0
 	}
@@ -112,9 +128,6 @@ func isRenju(board [S][S]int, x, y int) int {
 func convertSgfToPos(sgf string) string {
 	kifu := goban.ParseSgf(sgf)
 	pos := ""
-	for _, v := range kifu.Root.Steup {
-		pos += coordinateToRenjuPos(v.X, v.Y, S)
-	}
 	kifu.EachNode(func(n *goban.Node, move int) bool {
 		if move == 0 {
 			return false
