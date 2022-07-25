@@ -19,7 +19,7 @@ func main() {
 	// demo 10 (;GM[1]FF[4]CA[UTF-8]SZ[15]AP[弈客围棋];B[fe];W[ed];B[ff];W[an];B[fh];W[en];B[fi];W[nb];B[fj];W[ej];B[mn];W[ia];B[gg];W[nd];B[hg];W[ah];B[if];W[ho];B[ih];W[je];B[lg];W[ji];B[ig]) 否
 
 	// 0： 无禁手 1：三三禁手，2：四四禁手，3：长连
-	forbidResult := ren.CheckForbid("(;AP[WGo.js:2]FF[4]GM[1]CA[UTF-8]SZ[15];B[dd];W[];B[fd];W[];B[ec];W[];B[ee];W[];B[ed])")
+	forbidResult := ren.CheckForbid("(;SZ[15]KM[7.5]HA[0]AW[jd][he][jf][kg][jg][ig][hg][fh][li][mf][ii][hi]AB[hh][kd][ke][je][ie][if][hf][gg][fi][lg][kh][ji];B[lc];W[mb];B[ib];W[id];B[kc];W[kf];B[le];W[me];B[jc])")
 
 	// 0：无结果，1：黑胜，-1：白胜
 	OverResult := ren.CheckWin("(;SZ[15]AP[WGo.js:2]FF[4]GM[1]CA[UTF-8];B[dd];B[ed];B[fd];B[ec];W[];B[ee])")

@@ -112,6 +112,9 @@ func isRenju(board [S][S]int, x, y int) int {
 func convertSgfToPos(sgf string) string {
 	kifu := goban.ParseSgf(sgf)
 	pos := ""
+	for _, v := range kifu.Root.Steup {
+		pos += coordinateToRenjuPos(v.X, v.Y, S)
+	}
 	kifu.EachNode(func(n *goban.Node, move int) bool {
 		if move == 0 {
 			return false
