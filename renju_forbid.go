@@ -64,7 +64,6 @@ func setBoardMove(board *[S][S]int, curPos string, c int) (x, y int) {
 // 初始化棋盘
 func initBoard(sgf string) ([S][S]int, int, int) {
 	board := initABAW(sgf)
-	PrintBoard(board)
 	pos, firstMoveColor := convertSgfToPos(sgf)
 	compile := regexp.MustCompile(`[a-o][0-9]+`)
 	if compile == nil {
@@ -77,7 +76,6 @@ func initBoard(sgf string) ([S][S]int, int, int) {
 		x, y = setBoardMove(&board, v[0], curColor)
 		curColor = -curColor
 	}
-	PrintBoard(board)
 	return board, x, y
 }
 
