@@ -77,7 +77,6 @@ func initBoard(sgf string) ([S][S]int, int, int) {
 		x, y = setBoardMove(&board, v[0], curColor)
 		curColor = -curColor
 	}
-	PrintBoard(board)
 	return board, x, y
 }
 
