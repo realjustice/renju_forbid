@@ -55,7 +55,7 @@ func setBoardMove(board *[S][S]int, curPos string, c int) (x, y int) {
 	x = int(curPos[0]) - 'a'
 	pos, _ := strconv.Atoi(curPos[1:])
 	if pos != 0 {
-		y := pos - 1
+		y = pos - 1
 		board[x][y] = c
 	}
 	return x, y
@@ -64,19 +64,20 @@ func setBoardMove(board *[S][S]int, curPos string, c int) (x, y int) {
 // 初始化棋盘
 func initBoard(sgf string) ([S][S]int, int, int) {
 	board := initABAW(sgf)
-	//PrintBoard(board)
-	pos := convertSgfToPos(sgf)
+	PrintBoard(board)
+	pos, firstMoveColor := convertSgfToPos(sgf)
 	compile := regexp.MustCompile(`[a-o][0-9]+`)
 	if compile == nil {
 		return board, 0, 0
 	}
 	subMatch := compile.FindAllStringSubmatch(pos, -1)
-	curColor := BLACK_COLOR
+	curColor := firstMoveColor
 	x, y := -1, -1
 	for _, v := range subMatch {
 		x, y = setBoardMove(&board, v[0], curColor)
 		curColor = -curColor
 	}
+	PrintBoard(board)
 	return board, x, y
 }
 
@@ -125,18 +126,22 @@ func isRenju(board [S][S]int, x, y int) int {
 }
 
 // Sgf转坐标
-func convertSgfToPos(sgf string) string {
+func convertSgfToPos(sgf string) (pos string, firstMoveColor int) {
 	kifu := goban.ParseSgf(sgf)
-	pos := ""
+	firstMoveColor = BLACK_COLOR
 	kifu.EachNode(func(n *goban.Node, move int) bool {
 		if move == 0 {
 			return false
 		}
+		if move == 1 {
+			firstMoveColor = n.C
+		}
+
 		pos += coordinateToRenjuPos(n.X, n.Y, S)
 		return false
 	})
 
-	return strings.ToLower(pos)
+	return strings.ToLower(pos), firstMoveColor
 }
 
 func PrintBoard(board [S][S]int) {
